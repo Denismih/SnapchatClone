@@ -14,6 +14,7 @@
 		84C767A321073C3B0080EAFE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C767A121073C3B0080EAFE /* LaunchScreen.storyboard */; };
 		84C767AB21073CDB0080EAFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84C767AA21073CDB0080EAFE /* GoogleService-Info.plist */; };
 		84C767AD2107648C0080EAFE /* SnapsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C767AC2107648C0080EAFE /* SnapsTableViewController.swift */; };
+		84C767AF21076A520080EAFE /* SelectPictureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C767AE21076A520080EAFE /* SelectPictureViewController.swift */; };
 		C98A554D56D1B3CD3C800ED3 /* Pods_SnapchatClone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE86BDE61C886FB6021B87A3 /* Pods_SnapchatClone.framework */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		84C767A421073C3B0080EAFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		84C767AA21073CDB0080EAFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		84C767AC2107648C0080EAFE /* SnapsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapsTableViewController.swift; sourceTree = "<group>"; };
+		84C767AE21076A520080EAFE /* SelectPictureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPictureViewController.swift; sourceTree = "<group>"; };
 		D82923705EBA80558464A5FE /* Pods-SnapchatClone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapchatClone.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SnapchatClone/Pods-SnapchatClone.debug.xcconfig"; sourceTree = "<group>"; };
 		FE86BDE61C886FB6021B87A3 /* Pods_SnapchatClone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SnapchatClone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 				84C7679821073C380080EAFE /* AppDelegate.swift */,
 				84C7679A21073C380080EAFE /* LogInViewController.swift */,
 				84C767AC2107648C0080EAFE /* SnapsTableViewController.swift */,
+				84C767AE21076A520080EAFE /* SelectPictureViewController.swift */,
 				84C7679C21073C380080EAFE /* Main.storyboard */,
 				84C7679F21073C3B0080EAFE /* Assets.xcassets */,
 				84C767A121073C3B0080EAFE /* LaunchScreen.storyboard */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84C767AD2107648C0080EAFE /* SnapsTableViewController.swift in Sources */,
+				84C767AF21076A520080EAFE /* SelectPictureViewController.swift in Sources */,
 				84C7679B21073C380080EAFE /* LogInViewController.swift in Sources */,
 				84C7679921073C380080EAFE /* AppDelegate.swift in Sources */,
 			);
