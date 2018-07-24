@@ -35,6 +35,7 @@ class LoginViewController: UIViewController {
                            AlertBar.show(type: .error, message: error.localizedDescription, duration: 20)
                         } else {
                             AlertBar.show(type: .success, message: "Sign Up was succesful!", duration: 10)
+                            self.performSegue(withIdentifier: "toSnaps", sender: nil)
                         }
                     }
                 } else {
@@ -44,6 +45,7 @@ class LoginViewController: UIViewController {
                             AlertBar.show(type: .error, message: error.localizedDescription, duration: 20)
                         } else {
                             AlertBar.show(type: .success, message: "Log In was succesful!", duration: 10)
+                            self.performSegue(withIdentifier: "toSnaps", sender: nil)
                         }
                     }
                 }
