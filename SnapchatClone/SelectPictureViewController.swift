@@ -8,6 +8,7 @@
 
 import UIKit
 import AlertBar
+import FirebaseStorage
 
 class SelectPictureViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var imgView: UIImageView!
@@ -47,5 +48,26 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
     @IBAction func nextTapped(_ sender: Any) {
         guard imageSelected else {return AlertBar.show(type: .error, message: "Select an image for your snap", duration: 20)}
         guard message.text != "" else {return AlertBar.show(type: .error, message: "Enter a message for your snap", duration: 20)}
+        //upload image
+        let folder = Storage.storage().reference().child("Images")
+        if let image = imgView.image {
+            if let imageData = UIImageJPEGRepresentation(image, 0.1) {
+                let fileName = folder.child("\(NSUUID().uuidString).jpeg")
+                    fileName.putData(imageData, metadata: nil) { (metadata, error) in
+                    if let error = error {
+                        AlertBar.show(type: .error, message: error.localizedDescription, duration: 30)
+                    } else {
+                        //segue
+                        fileName.downloadURL(completion: { (url, error) in
+                            if let error = error {
+                                AlertBar.show(type: .error, message: error.localizedDescription, duration: 30)
+                            } else {
+                                self.performSegue(withIdentifier: "selectReceiver", sender: url?.absoluteString)
+                            }
+                        })
+                    }
+                }
+            }
+        }
     }
 }
