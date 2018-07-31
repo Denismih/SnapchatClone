@@ -8,10 +8,11 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import AlertBar
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var topBTN: UIButton!
@@ -24,7 +25,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
     @IBAction func topBtnTapped(_ sender: Any) {
         if let email = email.text {
             if let password = password.text {
@@ -32,10 +33,14 @@ class LoginViewController: UIViewController {
                     //Sign Up
                     Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
                         if let error = error {
-                           AlertBar.show(type: .error, message: error.localizedDescription, duration: 20)
+                            AlertBar.show(type: .error, message: error.localizedDescription, duration: 20)
                         } else {
-                            AlertBar.show(type: .success, message: "Sign Up was succesful!", duration: 10)
-                            self.performSegue(withIdentifier: "toSnaps", sender: nil)
+                            
+                            if let user = user {
+                                AlertBar.show(type: .success, message: "Sign Up was succesful!", duration: 10)
+                            Database.database().reference().child("users").child(user.user.uid).child("email").setValue(user.user.email)
+                                self.performSegue(withIdentifier: "toSnaps", sender: nil)
+                            }
                         }
                     }
                 } else {

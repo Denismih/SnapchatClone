@@ -1,62 +1,66 @@
 //
-//  SnapsTableViewController.swift
+//  SelectRecepientTableViewController.swift
 //  SnapchatClone
 //
-//  Created by Admin on 24.07.2018.
+//  Created by Admin on 27.07.2018.
 //  Copyright © 2018 Admin. All rights reserved.
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseAuth
 
-class SnapsTableViewController: UITableViewController {
+class SelectRecepientTableViewController: UITableViewController {
 
-    var snaps : [DataSnapshot] = []
+    var dowloadURL = ""
+    var message = ""
+    var users : [User] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let curUserID = Auth.auth().currentUser?.uid else {return}
-        Database.database().reference().child("users").child(curUserID).child("snaps").observe(.childAdded) { (snapshot) in
-           // print (snapshot)
-            self.snaps.append(snapshot)
-           // print(self.snaps.count)
-            self.tableView.reloadData()
+        
+        
+        Database.database().reference().child("users").observe(.childAdded) { (snapshot) in
+            if let userDict = snapshot.value as? NSDictionary {
+                if let email = userDict["email"] as? String {
+                    let user = User()
+                    user.email = email
+                    user.uid = snapshot.key
+                    self.users.append(user)
+                    self.tableView.reloadData()
+                }
+            }
         }
-        
-        
-       
+               
     }
 
-    @IBAction func logOut(_ sender: Any) {
-        try?  Auth.auth().signOut()
-        dismiss(animated: true, completion: nil)
-    }
     
+
     // MARK: - Table view data source
 
-   
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return users.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        print("cell")
-        let snap = snaps[indexPath.row]
-        print (snap)
-        if let snapDict = snap.value as? NSDictionary {
-            if let fromEmail = snapDict["from"] as? String {
-                cell.textLabel?.text = fromEmail
-            }
-        }
+        let user = users[indexPath.row]
+        
+        cell.textLabel?.text = user.email
 
         return cell
     }
-    
+  
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let fromEmail = Auth.auth().currentUser?.email else {return}
+        let user = users[indexPath.row]
+        let snap = ["from":fromEmail, "message":message, "imageURL":dowloadURL]
+        Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)
+        navigationController?.popToRootViewController(animated: true)
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -103,4 +107,8 @@ class SnapsTableViewController: UITableViewController {
     }
     */
 
+}
+class User {
+    var email = ""
+    var uid = ""
 }

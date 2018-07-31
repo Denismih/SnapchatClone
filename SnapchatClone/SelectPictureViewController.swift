@@ -46,6 +46,12 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func nextTapped(_ sender: Any) {
+        //Delete for prodaction
+        //******************************
+            message.text = "test"
+            imageSelected = true
+        //**********************
+        
         guard imageSelected else {return AlertBar.show(type: .error, message: "Select an image for your snap", duration: 20)}
         guard message.text != "" else {return AlertBar.show(type: .error, message: "Enter a message for your snap", duration: 20)}
         //upload image
@@ -68,6 +74,15 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
                     }
                 }
             }
+        }
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let downloadURL = sender as? String {
+        if let selectVC = segue.destination as? SelectRecepientTableViewController {
+            selectVC.dowloadURL = downloadURL
+            selectVC.message = self.message.text!
+        }
         }
     }
 }
