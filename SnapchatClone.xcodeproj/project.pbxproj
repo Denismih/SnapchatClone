@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		84BFA134210B7060000F980E /* SelectRecepientTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BFA133210B7060000F980E /* SelectRecepientTableViewController.swift */; };
+		84BFA1362111D63D000F980E /* ViewSnapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84BFA1352111D63D000F980E /* ViewSnapViewController.swift */; };
 		84C7679921073C380080EAFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7679821073C380080EAFE /* AppDelegate.swift */; };
 		84C7679B21073C380080EAFE /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C7679A21073C380080EAFE /* LogInViewController.swift */; };
 		84C7679E21073C380080EAFE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84C7679C21073C380080EAFE /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		16D447455CE58CE70FFB2412 /* Pods-SnapchatClone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SnapchatClone.release.xcconfig"; path = "Pods/Target Support Files/Pods-SnapchatClone/Pods-SnapchatClone.release.xcconfig"; sourceTree = "<group>"; };
 		84BFA133210B7060000F980E /* SelectRecepientTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRecepientTableViewController.swift; sourceTree = "<group>"; };
+		84BFA1352111D63D000F980E /* ViewSnapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSnapViewController.swift; sourceTree = "<group>"; };
 		84C7679521073C380080EAFE /* SnapchatClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapchatClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84C7679821073C380080EAFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84C7679A21073C380080EAFE /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				84C767AC2107648C0080EAFE /* SnapsTableViewController.swift */,
 				84C767AE21076A520080EAFE /* SelectPictureViewController.swift */,
 				84BFA133210B7060000F980E /* SelectRecepientTableViewController.swift */,
+				84BFA1352111D63D000F980E /* ViewSnapViewController.swift */,
 				84C7679C21073C380080EAFE /* Main.storyboard */,
 				84C7679F21073C3B0080EAFE /* Assets.xcassets */,
 				84C767A121073C3B0080EAFE /* LaunchScreen.storyboard */,
@@ -198,6 +201,7 @@
 				"${BUILT_PRODUCTS_DIR}/AlertBar/AlertBar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -206,6 +210,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlertBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -222,6 +227,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84BFA134210B7060000F980E /* SelectRecepientTableViewController.swift in Sources */,
+				84BFA1362111D63D000F980E /* ViewSnapViewController.swift in Sources */,
 				84C767AD2107648C0080EAFE /* SnapsTableViewController.swift in Sources */,
 				84C767AF21076A520080EAFE /* SelectPictureViewController.swift in Sources */,
 				84C7679B21073C380080EAFE /* LogInViewController.swift in Sources */,

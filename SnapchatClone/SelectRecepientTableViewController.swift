@@ -14,6 +14,7 @@ class SelectRecepientTableViewController: UITableViewController {
 
     var dowloadURL = ""
     var message = ""
+    var imageName = ""
     var users : [User] = []
     
     override func viewDidLoad() {
@@ -57,7 +58,7 @@ class SelectRecepientTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let fromEmail = Auth.auth().currentUser?.email else {return}
         let user = users[indexPath.row]
-        let snap = ["from":fromEmail, "message":message, "imageURL":dowloadURL]
+        let snap = ["from":fromEmail, "message":message, "imageURL":dowloadURL, "imageName":imageName]
         Database.database().reference().child("users").child(user.uid).child("snaps").childByAutoId().setValue(snap)
         navigationController?.popToRootViewController(animated: true)
     }

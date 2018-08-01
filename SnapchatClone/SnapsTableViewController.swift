@@ -18,10 +18,8 @@ class SnapsTableViewController: UITableViewController {
         super.viewDidLoad()
         guard let curUserID = Auth.auth().currentUser?.uid else {return}
         Database.database().reference().child("users").child(curUserID).child("snaps").observe(.childAdded) { (snapshot) in
-           // print (snapshot)
-            self.snaps.append(snapshot)
-           // print(self.snaps.count)
-            self.tableView.reloadData()
+           self.snaps.append(snapshot)
+           self.tableView.reloadData()
         }
         
         
@@ -39,15 +37,13 @@ class SnapsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return snaps.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell()
-        print("cell")
         let snap = snaps[indexPath.row]
-        print (snap)
         if let snapDict = snap.value as? NSDictionary {
             if let fromEmail = snapDict["from"] as? String {
                 cell.textLabel?.text = fromEmail
@@ -57,7 +53,23 @@ class SnapsTableViewController: UITableViewController {
         return cell
     }
     
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let snap = snaps[indexPath.row]
+        
+            performSegue(withIdentifier: "viewSnap", sender: snap)
+            
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "viewSnap" {
+            if let viewVS = segue.destination as? ViewSnapViewController {
+                if let snap = sender as? DataSnapshot {
+                    viewVS.dataSnap = snap
+                }
+            }
+        }
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {

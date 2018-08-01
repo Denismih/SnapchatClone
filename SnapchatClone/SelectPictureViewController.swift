@@ -16,6 +16,7 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
     
     var imagePicker : UIImagePickerController = UIImagePickerController()
     var imageSelected = false
+    let imageName = "\(NSUUID().uuidString).jpeg"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +59,7 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
         let folder = Storage.storage().reference().child("Images")
         if let image = imgView.image {
             if let imageData = UIImageJPEGRepresentation(image, 0.1) {
-                let fileName = folder.child("\(NSUUID().uuidString).jpeg")
+                let fileName = folder.child(imageName)
                     fileName.putData(imageData, metadata: nil) { (metadata, error) in
                     if let error = error {
                         AlertBar.show(type: .error, message: error.localizedDescription, duration: 30)
@@ -82,6 +83,7 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
         if let selectVC = segue.destination as? SelectRecepientTableViewController {
             selectVC.dowloadURL = downloadURL
             selectVC.message = self.message.text!
+            selectVC.imageName = imageName
         }
         }
     }
