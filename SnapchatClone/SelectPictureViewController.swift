@@ -49,8 +49,8 @@ class SelectPictureViewController: UIViewController, UIImagePickerControllerDele
     @IBAction func nextTapped(_ sender: Any) {
         //Delete for prodaction
         //******************************
-            message.text = "test"
-            imageSelected = true
+          //  message.text = "test"
+          //  imageSelected = true
         //**********************
         
         guard imageSelected else {return AlertBar.show(type: .error, message: "Select an image for your snap", duration: 20)}

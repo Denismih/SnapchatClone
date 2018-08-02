@@ -34,11 +34,11 @@ class ViewSnapViewController: UIViewController {
         guard let curUserID = Auth.auth().currentUser?.uid else {return}
         guard let key = dataSnap?.key else {return}
         guard let snap = dataSnap?.value as? NSDictionary else {return}
-        guard let imageName = snap["imageName"] else {return}
+        guard let imageName = snap["imageName"] as? String else {return}
         
-        print (imageName)
+       
         Database.database().reference().child("users").child(curUserID).child("snaps").child(key).removeValue()
-        Storage.storage().reference().child(imageName as! String).delete { (error) in
+        Storage.storage().reference().child("Images").child(imageName).delete { (error) in
             if error != nil {
                 print (error?.localizedDescription as Any)
             }
